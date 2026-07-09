@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap(p => p.data.tags))];
+
+  return tags.map(tag => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter(p => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+function formatDate(d) {
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Base title={`#${tag} — Jeff Salleh`} description={`Posts tagged ${tag}`}>
+  <div class="container--wide">
+    <section class="intro" style="padding-bottom: 2rem;">
+      <p class="intro__eyebrow">// tag</p>
+      <h1 class="intro__title" style="font-size: clamp(2rem, 4vw, 3rem);">#{tag}</h1>
+      <p class="intro__bio">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
+    </section>
+
+    {posts.map(post => (
+      <article class="post-card">
+        <div class="post-card__meta">
+          <time class="post-date" datetime={post.data.date.toISOString()}>
+            {formatDate(post.data.date)}
+          </time>
+        </div>
+        <h2 class="post-card__title">
+          <a href={`/post/${post.slug}`}>{post.data.title}</a>
+        </h2>
+        <p class="post-card__desc">{post.data.description}</p>
+      </article>
+    ))}
+  </div>
+</Base>
