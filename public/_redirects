@@ -1,0 +1,6 @@
+# Wix → Astro redirect rules
+# Add your old Wix post URLs below, mapping them to the new /post/slug paths.
+# Format: /old-wix-url  /new-astro-url  301
+
+# Example — uncomment and edit:
+# /post/my-old-wix-post-title   /post/my-old-wix-post-title   301
