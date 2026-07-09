@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}.${m}.${day}`;
+}
+---
+
+<Base title="Jeff Salleh — Writing">
+  <div class="container--wide">
+
+    <section class="intro">
+      <p class="intro__eyebrow">// senior director at oracle cloud, still close to the code</p>
+      <h1 class="intro__title">Notes on engineering, leadership, and lifelong learning.</h1>
+      <p class="intro__bio">
+        I'm a technology leader at Oracle Cloud Infrastructure, driving our Java
+        Management Service — and I still stay close to the code. Here I share what
+        I'm learning about building software, leading teams, and staying curious,
+        for peers and newcomers alike. However far along you are in your journey,
+        you're welcome here.
+      </p>
+    </section>
+
+    <!-- Posts list -->
+    <section class="posts-section">
+      <div class="posts-section__header">
+        <span class="posts-section__label">Writing</span>
+        <span class="posts-section__label">{String(posts.length).padStart(2, '0')} posts</span>
+      </div>
+
+      {posts.map(post => (
+        <article class="post-card">
+          <div class="post-card__meta">
+            <time class="post-date" datetime={post.data.date.toISOString()}>
+              {formatDate(post.data.date)}
+            </time>
+            {post.data.tags.map(tag => (
+              <a href={`/tags/${tag}`} class="tag">{tag}</a>
+            ))}
+          </div>
+          <h2 class="post-card__title">
+            <a href={`/post/${post.slug}`}>{post.data.title}</a>
+          </h2>
+          <p class="post-card__desc">{post.data.description}</p>
+        </article>
+      ))}
+
+      {posts.length === 0 && (
+        <p style="color: var(--tx-mut); padding: 3rem 0; font-family: var(--font-mono); font-size: 0.875rem;">
+          No posts yet — add .md files to src/content/blog/
+        </p>
+      )}
+    </section>
+
+  </div>
+</Base>
