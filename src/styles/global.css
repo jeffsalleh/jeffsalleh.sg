@@ -138,9 +138,10 @@ li + li { margin-top: 0.35rem; }
 }
 .site-logo:hover { opacity: 0.8; }
 .site-logo__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-
-.site-nav { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
+o
+.site-nav { display: flex; align-items: center; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
 .site-nav li { margin: 0; }
+.site-nav a {
 .site-nav a {
   color: var(--tx-mut); text-decoration: none; font-size: 0.875rem; transition: color 0.15s;
 }
