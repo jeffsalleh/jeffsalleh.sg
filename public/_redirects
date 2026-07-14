@@ -4,3 +4,41 @@
 
 # Example — uncomment and edit:
 # /post/my-old-wix-post-title   /post/my-old-wix-post-title   301
+# Add these lines to public/_redirects
+
+/jeffsalleh-personal/single-post/the-algorithmic-ink-where-singapore-muslim-leaders-and-techies-design-the-blueprint-for-values-driv  /post/the-algorithmic-ink-where-singapore-muslim-leaders-and-techies-design-the-blueprint-for-values-driv  301
+/jeffsalleh-personal/single-post/ground-control-to-major-tom  /post/ground-control-to-major-tom  301
+/jeffsalleh-personal/single-post/sikit-sikit-lama-lama-jadi-bukit  /post/sikit-sikit-lama-lama-jadi-bukit  301
+/jeffsalleh-personal/single-post/down-the-memory-lane-with-former-prime-minister-lee-terima-kasih-tuan  /post/down-the-memory-lane-with-former-prime-minister-lee-terima-kasih-tuan  301
+/jeffsalleh-personal/single-post/it-only-just-begun-the-tech-professional-network-journey  /post/it-only-just-begun-the-tech-professional-network-journey  301
+/jeffsalleh-personal/single-post/career-movements-and-trust  /post/career-movements-and-trust  301
+/jeffsalleh-personal/single-post/reflecting-on-my-whys-23  /post/reflecting-on-my-whys-23  301
+/jeffsalleh-personal/single-post/satisfying-the-illities-of-an-enterprise-cloud-service  /post/satisfying-the-illities-of-an-enterprise-cloud-service  301
+/jeffsalleh-personal/single-post/voiddeck-football-covered-in-the-local-news  /post/voiddeck-football-covered-in-the-local-news  301
+/jeffsalleh-personal/single-post/license-to-print  /post/license-to-print  301
+/jeffsalleh-personal/single-post/speaking-at-mendaki-club-s-re-work-initiative  /post/speaking-at-mendaki-club-s-re-work-initiative  301
+/jeffsalleh-personal/single-post/gcloud-commands-scratch-pad  /post/gcloud-commands-scratch-pad  301
+/jeffsalleh-personal/single-post/2019/10/28/still-having-my-java-cuppa-since-99  /post/still-having-my-java-cuppa-since-99  301
+/jeffsalleh-personal/single-post/2019/04/02/oracle-open-world-singapore-2019  /post/oracle-open-world-singapore-2019  301
+/jeffsalleh-personal/single-post/2019/02/27/leveraging-edm-for-the-new-launch-of-masjid-darul-ghufran  /post/leveraging-edm-for-the-new-launch-of-masjid-darul-ghufran  301
+/jeffsalleh-personal/single-post/2018/01/17/toiling-is-hard-work  /post/toiling-is-hard-work  301
+/jeffsalleh-personal/single-post/2017/12/19/another-year-older-time-for-reflection  /post/another-year-older-time-for-reflection  301
+# Add these lines to public/_redirects
+
+/jeffsalleh-personal/single-post/the-algorithmic-ink-where-singapore-muslim-leaders-and-techies-design-the-blueprint-for-values-driv  /post/the-algorithmic-ink-where-singapore-muslim-leaders-and-techies-design-the-blueprint-for-values-driv  301
+/jeffsalleh-personal/single-post/ground-control-to-major-tom  /post/ground-control-to-major-tom  301
+/jeffsalleh-personal/single-post/sikit-sikit-lama-lama-jadi-bukit  /post/sikit-sikit-lama-lama-jadi-bukit  301
+/jeffsalleh-personal/single-post/down-the-memory-lane-with-former-prime-minister-lee-terima-kasih-tuan  /post/down-the-memory-lane-with-former-prime-minister-lee-terima-kasih-tuan  301
+/jeffsalleh-personal/single-post/it-only-just-begun-the-tech-professional-network-journey  /post/it-only-just-begun-the-tech-professional-network-journey  301
+/jeffsalleh-personal/single-post/career-movements-and-trust  /post/career-movements-and-trust  301
+/jeffsalleh-personal/single-post/reflecting-on-my-whys-23  /post/reflecting-on-my-whys-23  301
+/jeffsalleh-personal/single-post/satisfying-the-illities-of-an-enterprise-cloud-service  /post/satisfying-the-illities-of-an-enterprise-cloud-service  301
+/jeffsalleh-personal/single-post/voiddeck-football-covered-in-the-local-news  /post/voiddeck-football-covered-in-the-local-news  301
+/jeffsalleh-personal/single-post/license-to-print  /post/license-to-print  301
+/jeffsalleh-personal/single-post/speaking-at-mendaki-club-s-re-work-initiative  /post/speaking-at-mendaki-club-s-re-work-initiative  301
+/jeffsalleh-personal/single-post/gcloud-commands-scratch-pad  /post/gcloud-commands-scratch-pad  301
+/jeffsalleh-personal/single-post/2019/10/28/still-having-my-java-cuppa-since-99  /post/still-having-my-java-cuppa-since-99  301
+/jeffsalleh-personal/single-post/2019/04/02/oracle-open-world-singapore-2019  /post/oracle-open-world-singapore-2019  301
+/jeffsalleh-personal/single-post/2019/02/27/leveraging-edm-for-the-new-launch-of-masjid-darul-ghufran  /post/leveraging-edm-for-the-new-launch-of-masjid-darul-ghufran  301
+/jeffsalleh-personal/single-post/2018/01/17/toiling-is-hard-work  /post/toiling-is-hard-work  301
+/jeffsalleh-personal/single-post/2017/12/19/another-year-older-time-for-reflection  /post/another-year-older-time-for-reflection  301
