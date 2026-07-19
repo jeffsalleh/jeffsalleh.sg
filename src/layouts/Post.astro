@@ -7,14 +7,14 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, date, updated, tags } = post.data;
+const { title, description, date, updated, tags, image } = post.data;
 
 function formatDate(d: Date) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 ---
 
-<Base title={`${title} — Jeff Salleh`} description={description} image={post.data.image}>
+<Base title={`${title} — Jeff Salleh`} description={description} image={image}>
   <div class="container">
     <article>
       <header class="post-header">
@@ -29,6 +29,11 @@ function formatDate(d: Date) {
         </div>
         <h1>{title}</h1>
         {description && <p class="post-header__desc">{description}</p>}
+        {image && (
+          <figure class="post-figure">
+            <img src={image} alt={title} />
+          </figure>
+        )}
       </header>
 
       <div class="post-body">

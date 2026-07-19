@@ -7,7 +7,11 @@ interface Props {
   image?: string;
 }
 
-const { title, description = 'My personal blog', image } = Astro.props;
+const {
+  title,
+  description = 'Notes on engineering, leadership, and lifelong learning from Jeff Salleh — Senior Director at Oracle Cloud Infrastructure.',
+  image = '/og-image.png',
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -30,6 +34,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {image && <meta name="twitter:image" content={new URL(image, Astro.site)} />}
 
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
