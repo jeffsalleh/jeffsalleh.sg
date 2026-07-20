@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featured = posts[0];
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+
+function formatDate(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}.${m}.${day}`;
+}
+---
+
+<Base
+  title="Jeff Salleh — Writing"
+  description="Notes on engineering, leadership, and lifelong learning from Jeff Salleh — a technology leader at Oracle Cloud Infrastructure."
+>
+  <div class="container--wide">
+
+    <section class="intro">
+      <p class="intro__eyebrow">// senior director at oracle cloud, still close to the code</p>
+      <h1 class="intro__title">Notes on engineering, leadership, and lifelong learning.</h1>
+      <p class="intro__bio">
+        I'm Jeff Salleh — a technology leader at Oracle Cloud Infrastructure driving
+        the Java Management Service, and I still stay close to the code. I write about
+        building software, leading teams, and staying curious — and I care deeply about
+        giving back to the community and building up the next generation of technologists.
+        However far along you are, you're welcome here.
+      </p>
+      <div class="hero-cta">
+        {featured && (
+          <a class="btn btn--primary" href={`/post/${featured.slug}`}>
+            Read the latest <span class="arrow">→</span>
+          </a>
+        )}
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/jeff-salleh/">Connect on LinkedIn</a>
+        <a class="btn btn--ghost" href="mailto:jeff@voiddeck.sg?subject=Speaking%20invitation">Speaking &amp; talks</a>
+      </div>
+    </section>
+
+    {featured && (
+      <a class="featured" id="featured" href={`/post/${featured.slug}`}>
+        <div class="featured__kicker">Featured · {formatDate(featured.data.date)}</div>
+        <h2 class="featured__title">{featured.data.title}</h2>
+        <p class="featured__desc">{featured.data.description}</p>
+      </a>
+    )}
+
+    <section class="posts-section">
+      <div class="posts-section__header">
+        <h3 class="posts-section__title">Writing</h3>
+        <span class="posts-section__count" id="post-count">{posts.length} posts</span>
+      </div>
+
+      <div class="tag-filter" id="tag-filter">
+        <button class="tag-chip" type="button" data-tag="all" aria-pressed="true">all</button>
+        {allTags.map(t => (
+          <button class="tag-chip" type="button" data-tag={t} aria-pressed="false">{t}</button>
+        ))}
+      </div>
+
+      <div id="post-list">
+        {posts.map((post, i) => (
+          <article class="post-card" data-tags={post.data.tags.join(',')} data-featured={i === 0 ? 'true' : 'false'}>
+            <div class="post-card__meta">
+              <time class="post-date" datetime={post.data.date.toISOString()}>
+                {formatDate(post.data.date)}
+              </time>
+              {post.data.tags.map(tag => (
+                <a href={`/tags/${tag}`} class="tag">{tag}</a>
+              ))}
+            </div>
+            <h2 class="post-card__title">
+              <a href={`/post/${post.slug}`}>{post.data.title}</a>
+            </h2>
+            <p class="post-card__desc">{post.data.description}</p>
+          </article>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <p style="color: var(--tx-mut); padding: 3rem 0; font-family: var(--font-mono); font-size: 0.875rem;">
+          No posts yet — add .md files to src/content/blog/
+        </p>
+      )}
+    </section>
+
+  </div>
+
+  <script is:inline define:vars={{ total: posts.length }}>
+    (function () {
+      const filter = document.getElementById('tag-filter');
+      if (!filter) return;
+      const chips = Array.from(filter.querySelectorAll('.tag-chip'));
+      const cards = Array.from(document.querySelectorAll('#post-list .post-card'));
+      const featured = document.getElementById('featured');
+      const countEl = document.getElementById('post-count');
+
+      function apply(tag) {
+        if (featured) featured.style.display = tag === 'all' ? '' : 'none';
+        let n = 0;
+        cards.forEach(function (c) {
+          const tags = (c.dataset.tags || '').split(',');
+          const show = tag === 'all' ? c.dataset.featured !== 'true' : tags.indexOf(tag) !== -1;
+          c.style.display = show ? '' : 'none';
+          if (show) n++;
+        });
+        if (countEl) countEl.textContent = tag === 'all' ? total + ' posts' : n + ' tagged \u201C' + tag + '\u201D';
+        chips.forEach(function (ch) {
+          ch.setAttribute('aria-pressed', ch.dataset.tag === tag ? 'true' : 'false');
+        });
+      }
+
+      chips.forEach(function (ch) {
+        ch.addEventListener('click', function () { apply(ch.dataset.tag); });
+      });
+      apply('all');
+    })();
+  </script>
+</Base>

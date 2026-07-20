@@ -5,7 +5,7 @@ date: 2026-07-14
 tags: ["meta", "ai"]
 draft: false
 ---
-![jeffsalleh.sg homepage](/images/a-new-home-and-a-small-experiment.png)
+![jeffsalleh.sg homepage](/images/jeff-desk.jpeg)
 
 If you're reading this, you're on my new website.
 
