@@ -3,11 +3,9 @@ title: "I handed an AI agent my whole stack"
 description: "Two seasons ago I shut down a fantasy football app with 500+ users because the operational toil wasn't worth it. Last week I rebuilt it on the Oracle stack — and let an AI agent run everything. Part 1 of a series."
 date: 2026-08-17
 tags: ["technology", "ai", "engineering"]
+image: "/images/vdf-banner-1600.png"
 draft: false
 ---
-![Voiddeck Footbal](/images/vdf-banner-1600.png)
-
-<!-- HERO IMAGE: screenshot of football.voiddeck.sg landing page -->
 
 ## The version that worked, and why I stopped
 
