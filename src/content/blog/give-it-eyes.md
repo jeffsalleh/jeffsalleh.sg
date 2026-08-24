@@ -1,7 +1,7 @@
 ---
 title: "Give it eyes"
 description: "My AI agent kept fixing a bug that wasn't fixed. It wasn't a reasoning problem — it was looking at the wrong thing. Part 2 of a series on handing an agent the whole stack."
-date: 2026-08-XX
+date: 2026-08-24
 tags: ["technology", "ai", "engineering"]
 image: "/images/give-it-eyes-hero.png"
 draft: false
