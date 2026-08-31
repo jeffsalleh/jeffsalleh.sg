@@ -59,8 +59,7 @@ is exactly why I want to be precise about what the lesson actually is.
 
 ## The wrong lesson
 
-The easy takeaway is "don't give an agent auto-approve - audit everything". That's the wrong and NOT the lesson,
-and if you take it you'll build slower for no real gain.
+The easy takeaway is "don't give an agent auto-approve - audit everything." That's the wrong takeaway — and NOT the lesson and if you take it you'll build slower for no real gain.
 
 Auto-approve wasn't the mistake. Running fast wasn't the mistake. If I'd hand-
 approved every change, I'd have spent the project babysitting a progress bar, and
