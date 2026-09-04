@@ -3,7 +3,7 @@ title: "I told the AI to escalate its own privileges. It refused."
 description: "Mid-task, my agent hit a permission it didn't have. I told it to grant itself the capability. It couldn't — and I've come round to thinking that's exactly right. Part 4 of a series."
 date: 2026-09-08
 tags: ["technology", "ai", "security"]
-image: "/images/privilege-refused-hero.svg"
+image: "/images/privilege-refused-hero.png"
 draft: false
 ---
 
