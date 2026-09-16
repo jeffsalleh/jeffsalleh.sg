@@ -177,3 +177,45 @@ setup easy / skills for the agent" = the SAFE external framing.
 - Published on jeffsalleh.sg: Struan House ("Twenty-five years since Frankston");
   Java Story reaction ("On Netscape, timing, and the work you don't see"); MCP certs
   post; "A new home, and a small experiment"; Parts 1-4 of the agent series.
+
+===================================================================
+## NEW FLAGSHIP IDEA — "Decomposing use cases into agent-sized work"
+===================================================================
+Jeff's original insight (came out of the cost post, Sep 2026). Potentially the
+strongest, most original post in the whole series — and a real SCS BoK contribution.
+
+THE ANALOGY: instructing an agent with too much accumulated context is like
+over-instructing your children. More history to hold & recollect = slower, more
+frustrated, more expensive. The cost post proved it mechanically (98% re-reading);
+this is the human truth underneath: retention has a cost; past a point more context
+makes the collaborator WORSE.
+
+THE LEAP (the new idea): if long context is the enemy, the SKILL of agent-era dev
+becomes decomposing a use case into small, atomic, self-contained tasks that each
+fit in a short/cheap session, then integrating them. Not one long conversation
+building a whole feature — a use case broken into session-sized units, reassembled.
+
+THE ARCHITECTURAL POINT (the thesis): current SW engineering produces known
+artifacts (requirements, design, schemas, contracts, tests...). The agent era needs
+a NEW artifact that doesn't quite exist yet / has no settled name: the reviewable
+DECOMPOSITION of a use case into agent-sized, integratable units + their sequencing.
+Jeff reached for "algorithm" — right instinct, different altitude: not the algorithm
+INSIDE a function, but "the algorithm of the work itself" — what gets built, in what
+order, with what boundaries, so each piece stays small enough to stay cheap.
+Producing & REVIEWING that artifact well is what saves the cost.
+
+NAMING: no settled term. Closest existing: work/task decomposition (too generic),
+vertical slicing (closest in spirit, but agile not agent-native). Naming this thing
+is a gift for the writer — naming the unnamed is what gets a piece remembered.
+
+RELATIONSHIP TO OPENSPEC (Jeff: "not sure yet, let's think"): Claude's read —
+OpenSpec/grill-me are TOOLS/mechanisms (capture decisions, interrogate a plan);
+Jeff's idea is the PRINCIPLE above them (why decompose, and that the decomposition
+is a new artifact). LIKELY: the decomposition post is the bigger piece and ABSORBS
+the OpenSpec material as its "how in practice" section, rather than OpenSpec being a
+separate competing post. So the queue may simplify: OpenSpec standalone → folded in.
+NOT LOCKED — Jeff wants to think about scope.
+
+PLACEMENT: cost post now teases it (short fold-in + "deserves its own piece, the one
+I want to write next"). So this is the NEXT post after cost. Possibly the bridge
+between Track 1 (reflection) and Track 2 (technical). Strong SCS-BoK candidate.
