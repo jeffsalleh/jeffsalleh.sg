@@ -1,7 +1,7 @@
 ---
 title: "Cut along the seams"
 description: "The cost of building with an agent is the length of the conversation. So the real skill is knowing where to cut a use case into pieces. I found the cut isn't where I expected: not between backend and frontend, but wherever the work first changes a promise to the outside world."
-date: 2026-09-XX
+date: 2026-09-24
 tags: ["technology", "ai", "engineering"]
 image: "/images/seams-hero.png"
 draft: false
