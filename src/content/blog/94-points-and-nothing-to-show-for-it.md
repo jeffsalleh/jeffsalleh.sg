@@ -55,7 +55,7 @@ I joked that the points should be divided by the number of people on the team. B
 
 The prizes went to the winner of each world, and then to one overall universe winner. The team we tied with won both: the prize for our world, and the overall prize. So they walked away with two prizes, and we walked away with none. Everyone else on stage had scored lower than us.
 
-Some of my team felt it, and so did others in the same world. It took a while for us to absorb it. We had done very well and still came away with nothing, while others went on stage with less. I understood. And I want to be honest about what I told everyone, and myself.
+Some of my team felt it so are others who were in the same world, and it took a while for us to absorb it. We had done very well and still came away with nothing, while others went on stage with less. I understood. And I want to be honest about what I told everyone, and myself.
 
 Being in the right place at the right time can change your trajectory. You may be rewarded, or you may not. In this case we were not.
 
