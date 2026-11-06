@@ -4,7 +4,7 @@ description: "The ethics question got the most votes on the AMP Q&A platform and
 date: 2026-11-06
 tags: ["ai", "ethics", "community"]
 image: "/images/question-hero.png"
-draft: true
+draft: false
 ---
 
 At the AMP Muslim Professionals Summit, the audience posted questions on the Q&A platform and voted on the ones they wanted the panel to answer. A question on ethics got the most votes. We did not get to it.
