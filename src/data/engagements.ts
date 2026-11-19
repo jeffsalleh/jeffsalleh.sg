@@ -115,6 +115,18 @@ export const engagements: Engagement[] = [
     public: false,
   },
   {
+    date: '2026-09-01',
+    title: 'Alumni to Student Mentoring 2026',
+    organiser: 'Monash University',
+    org: 'Monash',
+    type: 'mentoring',
+    role: 'Mentor to two IT students',
+    where: 'Online',
+    summary:
+      "Mentoring two Monash IT students through the university's alumni programme: career direction, CV reviews and the first steps into industry.",
+    public: true,
+  },
+  {
     date: '2026-05-26',
     title: 'Postgraduate Industry Experience Expo',
     organiser: 'Monash University, Faculty of IT',
