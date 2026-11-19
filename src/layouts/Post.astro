@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import type { CollectionEntry } from 'astro:content';
+import { engagements, longDate, anchorId } from '../data/engagements';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -8,6 +9,9 @@ interface Props {
 
 const { post } = Astro.props;
 const { title, description, date, updated, tags, image } = post.data;
+
+// The engagement this post came out of, if any.
+const engagement = engagements.find((e) => e.public && e.post === post.slug);
 
 function formatDate(d: Date) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -39,6 +43,16 @@ function formatDate(d: Date) {
       <div class="post-body">
         <slot />
       </div>
+
+      {engagement && (
+        <aside class="eng-note">
+          <span class="eng-note__kicker">// from the session</span>
+          This post came out of{' '}
+          <a href={`/speaking#${anchorId(engagement)}`}>{engagement.title}</a>,{' '}
+          {engagement.organiser}, {longDate(engagement.date)}.{' '}
+          <a class="eng-note__all" href="/speaking">All speaking →</a>
+        </aside>
+      )}
 
       <a href="/" class="back-link">← All posts</a>
     </article>

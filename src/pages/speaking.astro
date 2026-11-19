@@ -1,0 +1,250 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import {
+  engagements,
+  TYPE_LABELS,
+  sortKey,
+  shortDate,
+  longDate,
+  anchorId,
+  type Engagement,
+  type EngagementType,
+} from '../data/engagements';
+
+const published = new Set(
+  (await getCollection('blog', ({ data }) => !data.draft)).map((p) => p.slug),
+);
+const postHref = (e: Engagement) =>
+  e.post && published.has(e.post) ? `/post/${e.post}` : undefined;
+
+// Built daily or on publish, so "today" is the build date.
+const today = new Date().toISOString().slice(0, 10);
+
+const items = engagements
+  .filter((e) => e.public)
+  .sort((a, b) => sortKey(b.date).localeCompare(sortKey(a.date)));
+
+const isUpcoming = (e: Engagement) => e.date.length === 10 && e.date > today;
+const upcoming = items.filter(isUpcoming).reverse(); // soonest first
+const past = items.filter((e) => !isUpcoming(e));
+
+const years = [...new Set(past.map((e) => e.date.slice(0, 4)))];
+const byYear = years.map((year) => ({
+  year,
+  items: past.filter((e) => e.date.startsWith(year)),
+}));
+
+const TYPE_ORDER: EngagementType[] = [
+  'panel', 'fireside', 'talk', 'workshop', 'moderator',
+  'host', 'judge', 'organiser', 'mentoring', 'media',
+];
+const typeCounts = TYPE_ORDER
+  .map((t) => ({ t, n: past.filter((e) => e.type === t).length }))
+  .filter((x) => x.n > 0);
+
+const firstYear = years[years.length - 1];
+const orgCount = new Set(items.map((e) => e.org)).size;
+// Sub line: event, organiser and venue, without repeating the title.
+const subLine = (e: Engagement) =>
+  [e.event, (e.title + ' ' + (e.event ?? '')).includes(e.organiser) ? undefined : e.organiser, e.where]
+    .filter(Boolean)
+    .join(' · ');
+
+const PLURAL: Record<EngagementType, string> = {
+  panel: 'panels', fireside: 'firesides', talk: 'talks', workshop: 'workshops',
+  moderator: 'moderated', host: 'hosted', judge: 'judging', organiser: 'organised',
+  mentoring: 'mentoring', media: 'media',
+};
+
+const topics = [
+  {
+    title: 'Leading through change',
+    body: 'Agility, capacity cuts, and getting buy-in on the destination when people disagree about the route.',
+  },
+  {
+    title: 'AI at work',
+    body: 'What AI is changing about careers and teams, and how to adopt it with your ethics intact.',
+  },
+  {
+    title: 'Running cloud services',
+    body: "Owning a service end to end: reliability, operations at scale, and the '-ilities' nobody sees until they fail.",
+  },
+  {
+    title: 'The next generation of technologists',
+    body: 'Careers in tech for young Malay-Muslim professionals, and technology for mosques, non-profits and the community.',
+  },
+];
+
+const invite = 'mailto:jeff@voiddeck.sg?subject=Speaking%20invitation';
+---
+
+<Base
+  title="Speaking — Jeff Salleh"
+  description="Panels, fireside chats, talks, workshops and judging by Jeff Salleh, Senior Director at Oracle Cloud Infrastructure, since 2015."
+>
+  <div class="container--wide">
+
+    <section class="intro">
+      <p class="intro__eyebrow">// speaking</p>
+      <h1 class="intro__title">Panels, firesides and talks.</h1>
+      <p class="intro__bio">
+        I speak about leading engineering teams, AI at work, and growing the next
+        generation of technologists. Most of it happens at community and industry
+        events in Singapore, from student career conventions to summit stages.
+        This page keeps a record of every one.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn--primary" href={invite}>Invite me to speak <span class="arrow">→</span></a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/jeff-salleh/">Connect on LinkedIn</a>
+      </div>
+    </section>
+
+    <dl class="eng-stats">
+      <div class="eng-stats__item">
+        <dt>Sessions</dt>
+        <dd>{past.length}</dd>
+      </div>
+      <div class="eng-stats__item">
+        <dt>Organisations</dt>
+        <dd>{orgCount}</dd>
+      </div>
+      <div class="eng-stats__item">
+        <dt>Since</dt>
+        <dd>{firstYear}</dd>
+      </div>
+    </dl>
+
+    {upcoming.length > 0 && (
+      <section class="eng-upcoming" aria-label="Upcoming">
+        {upcoming.map((e) => (
+          <article class="eng-upcoming__item" id={anchorId(e)}>
+            <div class="featured__kicker">
+              Upcoming · {longDate(e.date)} · {TYPE_LABELS[e.type]}
+            </div>
+            <h2 class="eng-upcoming__title">{e.title}</h2>
+            <p class="eng__sub">{subLine(e)}</p>
+            <p class="eng-upcoming__summary">{e.summary}</p>
+          </article>
+        ))}
+      </section>
+    )}
+
+    <section class="eng-topics" aria-labelledby="topics-title">
+      <h2 class="posts-section__title" id="topics-title">What I talk about</h2>
+      <ol class="eng-topics__grid">
+        {topics.map((t, i) => (
+          <li class="eng-topics__item">
+            <span class="eng-topics__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="eng-topics__title">{t.title}</h3>
+            <p class="eng-topics__body">{t.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="eng-topics__formats">
+        Panels, fireside chats, talks, workshops and judging. Happy to moderate too.
+      </p>
+    </section>
+
+    <section class="posts-section" aria-labelledby="archive-title">
+      <div class="posts-section__header">
+        <h2 class="posts-section__title" id="archive-title">Every engagement</h2>
+        <span class="posts-section__count" id="eng-count">{past.length} since {firstYear}</span>
+      </div>
+
+      <div class="tag-filter" id="eng-filter" role="group" aria-label="Filter by type">
+        <button class="tag-chip" type="button" data-type="all" aria-pressed="true">
+          all <span class="tag-chip__n">{past.length}</span>
+        </button>
+        {typeCounts.map(({ t, n }) => (
+          <button class="tag-chip" type="button" data-type={t} aria-pressed="false">
+            {TYPE_LABELS[t].toLowerCase()} <span class="tag-chip__n">{n}</span>
+          </button>
+        ))}
+      </div>
+
+      {byYear.map(({ year, items }) => (
+        <section class="eng-year" data-year={year}>
+          <h3 class="eng-year__label">
+            {year}
+            <span class="eng-year__count">{items.length}</span>
+          </h3>
+          <ol class="eng-list">
+            {items.map((e) => {
+              const href = postHref(e);
+              return (
+                <li class="eng" data-type={e.type} id={anchorId(e)}>
+                  <div class="eng__date">{shortDate(e.date) || e.date}</div>
+                  <div class="eng__main">
+                    <div class="post-card__meta">
+                      <span class="tag">{TYPE_LABELS[e.type].toLowerCase()}</span>
+                      <span class="eng__role">{e.role}</span>
+                    </div>
+                    <h4 class="eng__title">
+                      {href ? <a href={href}>{e.title}</a> : e.title}
+                    </h4>
+                    {subLine(e) && <p class="eng__sub">{subLine(e)}</p>}
+                    <p class="eng__summary">{e.summary}</p>
+                    {href && (
+                      <a class="eng__more" href={href}>Read the post <span aria-hidden="true">→</span></a>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))}
+
+      <aside class="eng-invite">
+        <div>
+          <p class="eng-invite__title">Organising something?</p>
+          <p class="eng-invite__body">
+            Tell me who's in the room and the question you want answered. I'll tell you
+            honestly whether I'm the right person for it.
+          </p>
+        </div>
+        <a class="btn btn--primary" href={invite}>Invite me to speak <span class="arrow">→</span></a>
+      </aside>
+    </section>
+
+  </div>
+
+  <script is:inline define:vars={{ total: past.length, firstYear, plural: PLURAL }}>
+    (function () {
+      const filter = document.getElementById('eng-filter');
+      if (!filter) return;
+      const chips = Array.from(filter.querySelectorAll('.tag-chip'));
+      const rows = Array.from(document.querySelectorAll('.eng'));
+      const years = Array.from(document.querySelectorAll('.eng-year'));
+      const countEl = document.getElementById('eng-count');
+
+      function apply(type) {
+        let n = 0;
+        rows.forEach(function (r) {
+          const show = type === 'all' || r.dataset.type === type;
+          r.hidden = !show;
+          if (show) n++;
+        });
+        years.forEach(function (y) {
+          const visible = y.querySelectorAll('.eng:not([hidden])');
+          y.hidden = visible.length === 0;
+          const c = y.querySelector('.eng-year__count');
+          if (c) c.textContent = String(visible.length);
+        });
+        if (countEl) {
+          countEl.textContent = type === 'all'
+            ? total + ' since ' + firstYear
+            : n + ' ' + (plural[type] || type);
+        }
+        chips.forEach(function (ch) {
+          ch.setAttribute('aria-pressed', ch.dataset.type === type ? 'true' : 'false');
+        });
+      }
+
+      chips.forEach(function (ch) {
+        ch.addEventListener('click', function () { apply(ch.dataset.type); });
+      });
+    })();
+  </script>
+</Base>
