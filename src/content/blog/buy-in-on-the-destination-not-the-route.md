@@ -3,6 +3,7 @@ title: "Buy-in on the destination, not the route"
 description: "At SMU's Team Lead Programme, a team lead asked whether the whole team needs to buy in when the direction changes. My answer, and the time I was the one who didn't."
 date: 2026-11-20
 tags: ["leadership", "change", "speaking"]
+image: "/images/buy-in-hero.png"
 draft: false
 ---
 
