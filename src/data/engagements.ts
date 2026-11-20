@@ -69,10 +69,10 @@ export const engagements: Engagement[] = [
     organiser: 'SMU Executive Development',
     org: 'SMU',
     type: 'fireside',
-    role: 'Fireside dialogue with Dr Faisal Aman',
+    role: 'Fireside dialogue with Lawrence Chua, moderated by Dr Faisal Aman',
     where: 'Singapore Management University',
     summary:
-      'A 90-minute dialogue with team leads from across the region on staying agile, leading through capacity cuts, and bringing a team along when the direction changes.',
+      'The closing dialogue for team leads from eight organisations and six nationalities: staying agile, leading through capacity cuts, and bringing a team along when the direction changes.',
     post: 'buy-in-on-the-destination-not-the-route',
     public: true,
   },
