@@ -63,6 +63,19 @@ export const engagements: Engagement[] = [
     public: true,
   },
   {
+    date: '2026-11-26',
+    title: 'Crisis communication in the age of AI',
+    event: 'CET1014 Crisis Management and Essential Services',
+    organiser: 'Singapore University of Social Sciences',
+    org: 'SUSS',
+    type: 'talk',
+    role: 'Guest lecturer',
+    where: 'SUSS',
+    summary:
+      'A guest lecture for community volunteers on how AI changes crisis communication: how it works and fails, fakes and how to prove what is real, how much human control AI needs, engineering for failure, and what AI agents could change next.',
+    public: true,
+  },
+  {
     date: '2026-11-19',
     title: 'Agility and effective management in the age of disruptions',
     event: 'Team Lead Programme',
